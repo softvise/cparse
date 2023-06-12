@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <iostream>
+#include <functional>
 #include <map>
 #include <stack>
 #include <string>
@@ -341,8 +342,7 @@ struct opSignature_t {
 
 class Operation {
  public:
-  typedef packToken (*opFunc_t)(const packToken& left, const packToken& right,
-                                evaluationData* data);
+  typedef std::function<packToken(const packToken&, const packToken&, evaluationData*)> opFunc_t;
 
  public:
   // Use this exception to reject an operation.

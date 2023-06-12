@@ -1,6 +1,7 @@
 #ifndef PACKTOKEN_H_
 #define PACKTOKEN_H_
 
+#include <functional>
 #include <string>
 
 namespace cparse {
@@ -12,7 +13,7 @@ class packToken {
  public:
   static const packToken& None();
 
-  typedef std::string (*strFunc_t)(const TokenBase*, uint32_t);
+  typedef std::function<std::string(const TokenBase*, uint32_t)> strFunc_t;
   static strFunc_t& str_custom();
 
  public:
